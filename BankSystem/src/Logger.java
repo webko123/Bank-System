@@ -1,13 +1,11 @@
 
-
 public class Logger {
 
-	
-	String driverName;
+	private String driverName;
 
-	
-	
-	
+	public Logger() {
+		super();
+	}
 
 	public Logger(String driverName) {
 		super();
@@ -21,23 +19,43 @@ public class Logger {
 	public void setDriverName(String driverName) {
 		this.driverName = driverName;
 	}
-	
-	
-	public void log(Log l1) {
-		System.out.println(l1.getData);
+
+	public void log(Log log) {
+		System.out.println(log.getData());
 	}
 
-	public Log getlog() {
+	public Log[] getLogs() {
 		return null;
 	}
 
 	@Override
 	public String toString() {
-		return "Logger [driverName=" + driverName + ", getDriverName()=" + getDriverName() + ", getlog()=" + getlog()
-				+ "]";
+		return "Logger [driverName=" + driverName + "]";
 	}
-	
-	
-	
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((driverName == null) ? 0 : driverName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Logger other = (Logger) obj;
+		if (driverName == null) {
+			if (other.driverName != null)
+				return false;
+		} else if (!driverName.equals(other.driverName))
+			return false;
+		return true;
+	}
+
 }

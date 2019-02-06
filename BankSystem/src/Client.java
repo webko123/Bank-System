@@ -123,6 +123,25 @@ public class Client {
 			
 		}
 	}
+	
+	public void deposite (float deposite) {
+		balance+= deposite - commissionRate;
+	}
+	
+	public void withdraw(float withdraw) {
+		balance-= withdraw+commissionRate;
+	}
+	
+	public float getFortune() {
+		float sum=0;
+		for (int i =0;i<accounts.length;i++) {
+			if(accounts[i]!=null) {
+				sum+=accounts[i].getBalance();
+				
+			}
+		}
+		return sum+balance;
+	}
 
 	@Override
 	public String toString() {
